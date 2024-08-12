@@ -86,7 +86,7 @@ K-means             : 0.2305
 Affinity Propagation: 0.2022
 
 # 7. Conclusões
-Nesse ensaio de Machine Learning, adquirir experiência sobree o funcionamento dos limites
+Nesse ensaio de Machine Learning, adquirir experiência sobre o funcionamento dos limites
 dos algoritmos entre os estados de underffiting e overfitting. Deste modo, foi notado que os algoritmos baseados em árvores são sensíveis quanto a profundidade do crescimento e do número de árvores na floresta, fazendo com que a escolha correta dos valores desses parâmetros impeça os algoritmos de entrar no estado de overfitting ou underffitig. Já os algoritmos de regressão, são sensíveis ao grau do polinômio, de modo que esse parâmetro controla o limite entre o estado de underfitting e overfitting desses algoritmos.
 Esse ensaio de Machine Learning foi importante para aprofundar o entendimento sobre o funcionamento de diversos algoritmos de classificação, regressão e clusterização, tendo os principais parâmetros de controle ajustes que podem levar ou tirar dos estados de underfitting e overfitting.
 Por último, conclui-se que em alguns casos como de regressão e agrupamento, faz se necessário um estudo e preparo maior do conjunto de dados, já que não foi encontrado resultado satifatório em nenhum modelo.
