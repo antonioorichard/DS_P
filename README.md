@@ -1,109 +1,106 @@
 
-# 1. Nome do Projeto
-    Ensaio de Machine Learning
-# 2. Problema de Negócio
-## 2.1 Descrição
-A empresa Data Money acredita que a expertise no treinamento e ajuste fino dos algoritmos, feito
-pelos Cientistas de Dados da empresa, é a principal motivo dos ótimos resultados que as
-consultorias vem entregando aos seus clientes.
-## 2.2 Objetivo
-O objetivo desse projeto será realizar ensaios com algoritmos de Classificação, Regressão e
-Clusterização, para estudar a mudança do comportamento da performance, a medida que os
-valores dos principais parâmetros de controle de overfitting e underfitting são ajustados.
-# 3. Planejamento da solução
-## 3.1 Produto final
-O produto final será 7 tabelas mostrando a performance dos algoritmos, avaliados usando múltiplas
-métricas, para 3 conjuntos de dados diferentes: Treinamento, validação e teste.
-## 3.2 Algoritmos ensaiados
-**Classificação**:
-**Algoritmos**             : KNN, Decision Tree, Random Forest e Logistic Regression
-**Métricas de performance**: Accuracy, Precision, Recall e F1-Score
+
+O notebook com todos os passos realizados está disponivel [aqui](https://github.com/antonioorichard/DS_P/blob/main/Sales_predict_ciclo_10.ipynb). E ainda, foi construído um o BOT para facilitar o acesso as previsão via Telegram, basta solicitar enviando o número da loja neste contato[rossmann_bot](https://t.me/Rosssmann_bot). Ao enviar uma mensagem para o BOT, a resposta pode haver um delay para retornar, visto que, o Render depois de um tempo sem uso desliga a aplicação.
+O dataset está disponivel no [Kaggle](https://www.kaggle.com/c/rossmann-store-sales/data).
+
+![Health Insurance Cross-Sell](img/big-dodzy-2AuCU5vpeQQ-unsplash.jpg)
+
+## 1. Problema de negócios
+### 1.1 Problema
+O CFO da empresa fez uma reunião com todos os Gerentes de Loja e pediu para que cada um deles trouxesse uma previsão das próximas 6 semanas de vendas. 
+Depois dessa reunião, todos os Gerentes entraram em contato, requisitando uma previsão de vendas de suas lojas.
+
+### 1.2 Motivação
+O CFO está querendo fazer uma reforma nas lojas baseado na receita dela.
 
 
-**Regressão**:
-**Algoritmos**             : Linear Regression, Decision Tree Regressor, Random Forest Regressor, Polinomial
-Regression, Linear Regression Lasso, Linear Regression Ridge, Linear Regression Elastic Net,
-Polinomial Regression Lasso, Polinomial Regression Ridge e Polinomial Regression Elastic Net
-**Métricas de performance**: R2, MSE, RMSE, MAE e MAPE.
+### 1.3 Demandas de negócio
+
+Produto de dados solicitado:
+* Uma previsão de vendas das próximas semanas de todas as lojas da Rossmann.
 
 
-**Agrupamento**:
-**Algoritmos**             : K-Means e Affinity Propagation
-**Métricas de performance**: Silhouette Score
+## 2. Premissas de negócio
 
-## 3.3 Ferramentas utilizadas:
-1. Python **3.12.0** e Scikit-learn, matplotlib, pandas, time e numpy.
+- Todos os produtos de dados entregues devem ser acessíveis via internet.
+- O planejamento da solução será validado com os times de negócio, visando garantir que as soluções desenvolvidas sejam úteis na sua tomada de decisão.
 
-# 4. Desenvolvimento
-## 4.1 Estratégia da solução
-Para o objetivo de ensaiar os algoritmos de Machine Learning, será utilizado a linguagem Python 
-para escrever os códigos. Na etapa de treinamento cada um dos algoritmos é escrito com 
-os seus principais parâmetros de ajuste de overfitting, e ainda com as principais métricas para observar o comportamento. O conjunto de valores que fizerem os algoritmos alcançarem a melhor performance, serão aqueles escolhidos para o treinamento final do algoritmo.
+As variáveis do dataset original são:
 
+Variável | Definição
+------------ | -------------
+|id | Um Id que representa uma tupla (Store, Date) dentro do conjunto de testes.|
+|Store | Um ID exclusivo para cada loja.|
+|Sales | O volume de negócios para um determinado dia.|
+|Customers | O número de clientes em um determinado dia. |
+|Open | Um indicador para saber se a loja estava aberta: 0 = fechado, 1 = aberto |
+|StateHoliday | Indica um feriado estadual. Normalmente todas as lojas, com poucas exceções, estão fechadas nos feriados estaduais. Observe que todas as escolas estão fechadas nos feriados e fins de semana. a = feriado, b = feriado da páscoa, c = natal, 0 = nenhum. |
+|SchoolHoliday | Indica se a (Loja, Data) foi afetada pelo fechamento de escolas públicas. |
+|StoreType | Diferencia entre 4 modelos de loja diferentes: a, b, c, d |
+|Assortment | Descreve um nível de sortimento: a = básico, b = extra, c = estendido. |
+|CompetitionDistance| Distância em metros até a loja concorrente mais próxima. |
+|CompetitionOpenSince [Month/Year] | Fornece o ano e o mês aproximados em que o concorrente mais próximo foi aberto. |
+|Promo | Indica se uma loja está executando uma promoção naquele dia. |
+|Promo2 | Promo2 é uma promoção contínua e consecutiva para algumas lojas: 0 = a loja não está participando, 1 = a loja está participando. |
+|Promo2Since[Year/Week] | Descreve o ano e a semana do calendário em que a loja começou a participar do Promo2 |
+|PromoInterval | Descreve os intervalos consecutivos em que a Promo2 é iniciada, nomeando os meses em que a promoção é iniciada novamente. Por exemplo, "fevereiro, maio, agosto, novembro" significa que cada rodada começa em fevereiro, maio, agosto, novembro de qualquer ano para essa loja. |
 
-## 4.2 O passo a passo
-**Passo 1**: Divisão dos dados em treino, teste e validação.
+## 3. Planejamento da solução
 
-**Passo 2**: Treinamento dos algoritmos com os dados de treinamento, utilizando os parâmetros
-“default”.
+### 3.1. Produto final
 
-**Passo 3**: Medir a performance dos algoritmos treinados com o parâmetro default, utilizando o
-conjunto de dados de treinamento.
+O que será entregue efetivamente?
+- Um bot no Telegram onde vai ser necessário enviar um código da loja.
 
-**Passo 4**: Medir a performance dos algoritmos treinados com o parâmetro “default”, utilizando o
-conjunto de dados de validação.
+ ### 3.2. Ferramentas
 
-**Passo 5**: Alternar os valores dos principais parâmetros que controlam o overfitting do algoritmo até
-encontrar o conjunto de parâmetros apresente a melhor performance dos algoritmos.
+Quais ferramentas serão usadas no processo?
+- Visual Studio code;
+- Jupyter Notebook;
+- Git, Github;
+- Python;
+- Telegram;
+- Cloud Render.
 
-**Passo 6**: Unir os dados de treinamento e validação
+## 4. Os 3 principais insights dos dados
 
-**Passo 7**: Retreinar o algoritmo com a união dos dados de treinamento e validação, utilizando os
-melhores valores para os parâmetros de controle do algoritmo.
+#### 1 Lojas com maior sortimentos deveriam vender mais.
+* **FALSA** Lojas com MAIOR SORTIMENTO vendem MENOS.
 
-**Passo 8**: Medir a performance dos algoritmos treinados com os melhores parâmetro, utilizando o
-conjunto de dados de teste.
+* Insight de negócio: Verificar quais os locais onde ficam as lojas que vendem mais,  para encontrar uma forma de reproduzir o cenário, pois, o volume de pessoas no local como shopping também podem influenciar.
 
-**Passo 9**: Avaliar os ensaios e anotar os 3 principais Insights que se destacaram.
-
-
-# 5. Os top 3 Insights 
-## 5.1 Insight Top 1 
-Os algoritmos baseados em árvores possuem uma performance melhor em todas as métricas, quando aplicados sobre os dados de teste, no ensaio de Classificação. 
-## 5.2 Insight Top 2
-A performance dos algoritmos de classificação sobre os dados de validação ficou bem próxima da performance sobre os dados de teste, exceto com K-nn. 
-
-## 5.3 Insight Top 3
- Todos os algoritmos de regressão e clusters não apresentaram boas métricas de performance, o que mostra uma necessidade de uma seleção de atributos e uma preparação melhor das variáveis independentes do conjunto de dados.
-
-# 6. Resultados
-## 6.1 Ensaio de Classificação ( Classification )
-
-![Resultados da classificação](/Imagem/image.png)
-
-## 6.2 Ensaio de Regressão     ( Regression )
-### Parte I
-![Resultados da regressão Parte I](/Imagem/image-1.png)
-### Parte II
-![Resultados da regressão Parte II](/Imagem/image-2.png)
-### Parte III
-![Resultados da regressão Parte III](/Imagem/image-3.png)
-
-## 6.3 Ensaio de Agrupamento   (Clusters )
-K-means             : 0.2305
-Affinity Propagation: 0.2022
-
-# 7. Conclusões
-Nesse ensaio de Machine Learning, adquirir experiência sobre o funcionamento dos limites
-dos algoritmos entre os estados de underffiting e overfitting. Deste modo, foi notado que os algoritmos baseados em árvores são sensíveis quanto a profundidade do crescimento e do número de árvores na floresta, fazendo com que a escolha correta dos valores desses parâmetros impeça os algoritmos de entrar no estado de overfitting ou underffitig. Já os algoritmos de regressão, são sensíveis ao grau do polinômio, de modo que esse parâmetro controla o limite entre o estado de underfitting e overfitting desses algoritmos.
-Esse ensaio de Machine Learning foi importante para aprofundar o entendimento sobre o funcionamento de diversos algoritmos de classificação, regressão e clusterização, tendo os principais parâmetros de controle ajustes que podem levar ou tirar dos estados de underfitting e overfitting.
-Por último, conclui-se que em alguns casos como de regressão e agrupamento, faz se necessário um estudo e preparo maior do conjunto de dados, já que não foi encontrado resultado satifatório em nenhum modelo.
-
-# 8. Próximos passos
-Para próximos passo, incluir novos algoritmos e Machine Learning e usar diferentes conjuntos de dados para aumentar o conhecimento sobre os algoritmos e quais cenários são mais favoráveis para o aumento da performance dos mesmos.
+#### 2 Lojas com competidores mais próximos deveriam vender menos.
+* **FALSA** Lojas com COMPETIDORES MAIS PRÓXIMOS vendem MAIS
 
 
+* Insight de negócio: Percebe que há uma tendência de as vendas se manterem em equilíbrio com o tempo. Isso pode ser mudada criando algum tipo de alavanca para o negócio. 
 
-# CURSO MACHINE LEARNING EM PYTHON
-Este projeto foi criado com víeis acadêmicos para o curso de fundamentos de Machine Learning. 
+#### 3 Lojas com competidores á mais tempo deveriam vender mais.
+* **FALSA** Lojas com COMPETIDORES À MAIS TEMPO vendem MENOS.
 
+* Insight de negócio: Pelos dados analisados conseguimos perceber que lojas classificadas como extra são as que vendem menos em relação às que são classificadas como básicas e estendidas.
+
+## 5. Resultados para o negócio
+De acordo com os critérios definidos, foi feita uma previsão de vendas das próximas 6 semanas. Como resultado para o negócio foram criados:
+
+* Uma API onde será feita a previsão de vendas
+
+* Um BOT no Telegram onde o CFO e os gerentes de lojas poderão enviar o código da loja para prever a venda.
+
+## 5. Conclusão
+* O objetivo do projeto foi alcançado, dado que os produtos de dados propostos foram gerados com sucesso. O CFO e os gerentes já podem utilizar a solução para a tomada de decisão.
+
+O Bot no Telegram pode ser  acessado por [rossmann_bot](https://t.me/Rosssmann_bot).
+
+
+## 7. Próximos passos
+
+Algumas melhorias no projeto podem ser incrementadas no futuro:
+
+* Fazer um autenticação, pois se trata de um produto para empresa;
+* Mostrar mais informações sobre a loja como qual o gerente, quantos funcionários;
+* Mostra métricas como CAC e LTV.
+
+## 6 Referências
+* Este Projeto foi feito como parte do curso "DS em Produção", da [Comunidade DS](https://www.comunidadedatascience.com/).
+* O Dataset foi obtido no [Kaggle](https://www.kaggle.com/c/rossmann-store-sales/data).
